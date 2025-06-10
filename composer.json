@@ -1,0 +1,22 @@
+{
+    "name": "boreistudio/filament-mercado-pago",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Boreistudio\\FilamentMercadoPago\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "BoreiStudio\\FilamentMercadoPago\\FilamentMercadoPagoPlugin"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Borei Studio"
+        }
+    ],
+    "require": {}
+}
