@@ -10,7 +10,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "BoreiStudio\\FilamentMercadoPago\\FilamentMercadoPagoServiceProvider"
+                "BoreiStudio\\FilamentMercadoPago\\FilamentMercadoPagoPlugin"
             ]
         }
     },
