@@ -15,29 +15,44 @@ To get started with the Filament Mercado Pago package, follow these steps:
 Install the package via Composer:
 
 ```bash
-composer require boreistudio/filament-click-heatmap:dev-main # Use your actual package name here
+composer require boreistudio/filament-mercado-pago
 ```
 
-### 2.2 Run Migrations
+### 2.2 Publish Assets (Configuration and Migrations)
 
-The package requires a database table (`mercado_pago_accounts`) to store the Mercado Pago credentials. Publish and run the migrations:
+After installing the package, you need to publish its assets. You have two options:
+
+#### Option 1: Use the Installation Command (Recommended)
+
+This command will publish both the configuration file and the necessary database migrations:
+
+```bash
+php artisan filament-mercado-pago:install
+```
+
+#### Option 2: Publish Manually
+
+Alternatively, you can publish the assets individually:
+
+To publish the migrations:
 
 ```bash
 php artisan vendor:publish --tag="filament-mercado-pago-migrations"
-php artisan migrate
 ```
 
-**Note on Column Length:** If you encounter a `SQLSTATE[22001]: String data, right truncated` error, it means the encrypted tokens are too long for the default column sizes. You might need to manually adjust the `access_token` and `public_key` columns to `TEXT` type in your migration or modify the existing `mercado_pago_accounts` table migration.
-
-### 2.3 Publish Configuration (Optional)
-
-You can publish the configuration file to customize settings like `client_id`, `client_secret`, and `redirect_uri`:
+To publish the configuration file (optional, if you need to customize settings):
 
 ```bash
 php artisan vendor:publish --tag="filament-mercado-pago-config"
 ```
 
-This will create a `config/filament-mercado-pago.php` file.
+After publishing the assets (using either option), remember to execute your database migrations:
+
+```bash
+php artisan migrate
+```
+
+**Note on Column Length:** If you encounter a `SQLSTATE[22001]: String data, right truncated` error after migration, it means the encrypted tokens are too long for the default column sizes. You might need to manually adjust the `access_token` and `public_key` columns to `TEXT` type in your migration or modify the existing `mercado_pago_accounts` table migration.
 
 ## 3. Configuration
 

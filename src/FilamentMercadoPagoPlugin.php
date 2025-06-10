@@ -2,29 +2,32 @@
 
 namespace BoreiStudio\FilamentMercadoPago;
 
-use Illuminate\Support\ServiceProvider;
+use Filament\Contracts\Plugin;
+use Filament\Panel;
+use BoreiStudio\FilamentMercadoPago\Pages\MercadoPagoAccountPage;
 
-class FilamentMercadoPagoPlugin extends ServiceProvider
+class FilamentMercadoPagoPlugin implements Plugin
 {
-    public function register()
+    public static function make(): static
     {
-        $this->commands([
-            \BoreiStudio\FilamentMercadoPago\Console\InstallCommand::class,
-        ]);
+        return app(static::class);
     }
 
-    public function boot()
+    public function getId(): string
     {
-        $this->publishes([
-            __DIR__.'/../config/filament-mercado-pago.php' => config_path('filament-mercado-pago.php'),
-        ], 'filament-mercado-pago-config');
+        return 'filament-mercado-pago';
+    }
 
-        $this->publishes([
-            __DIR__.'/../database/migrations/' => database_path('migrations'),
-        ], 'filament-mercado-pago-migrations');
+    public function register(Panel $panel): void
+    {
+        $panel
+            ->pages([
+                MercadoPagoAccountPage::class,
+            ]);
+    }
 
-        $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
-        $this->loadMigrationsFrom(__DIR__ . '/../database/migrations');
-        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'filament-mercadopago');
+    public function boot(Panel $panel): void
+    {
+        //
     }
 }
