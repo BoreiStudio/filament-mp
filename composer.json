@@ -4,13 +4,13 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Boreistudio\\FilamentMercadoPago\\": "src/"
+            "BoreiStudio\\FilamentMercadoPago\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "BoreiStudio\\FilamentMercadoPago\\FilamentMercadoPagoPlugin"
+                "BoreiStudio\\FilamentMercadoPago\\FilamentMercadoPagoServiceProvider"
             ]
         }
     },

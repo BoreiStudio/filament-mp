@@ -75,6 +75,7 @@ class MercadoPagoService
             'public_key'    => $publicKey,
             'scope'         => $account->scope,
             'user_id_mp'    => $account->user_id_mp,
+            'expires_in'    => $account->expires_in,
         ];
     }
 
